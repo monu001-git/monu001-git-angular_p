@@ -15,13 +15,10 @@ export class AdminApiService {
     return this.http.post(`http://localhost:8000/api/register`, data);
   }
 
-
   toggleStatus(data: any) {
     console.log('data',data)
     return this.http.get(`http://localhost:8000/api/status-change/${data.status}/${data.userId}/${data.tableName}`);
   }
-
-
    // user url
   getUser() {
     return this.http.get(`http://localhost:8000/api/user`);
