@@ -1,0 +1,129 @@
+<section class="mt-5">
+  <!-- Jumbotron -->
+  <div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
+    <div class="container">
+      <div class="row gx-lg-5 align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <h1 class="my-5 display-3 fw-bold ls-tight">
+            The best offer <br />
+            <span class="text-primary">for your business</span>
+          </h1>
+          <p style="color: hsl(217, 10%, 50.8%)">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Eveniet, itaque accusantium odio, soluta, corrupti aliquam
+            quibusdam tempora at cupiditate quis eum maiores libero
+            veritatis? Dicta facilis sint aliquid ipsum atque?
+          </p>
+        </div>
+
+        <div class="col-lg-6 mb-5  mb-lg-0">
+          <div class="card">
+            <div class="card-body py-5 px-md-5">
+              <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+                <!-- <div data-mdb-input-init class="form-outline mb-4">
+                    <label class="form-label" for="form3Example1">First name</label>
+                    <input type="text" formControlName="name" id="form3Example1" class="form-control" />
+                    <div class="text-danger"
+                      *ngIf="loginForm.get('name')?.invalid && (loginForm.get('name')?.dirty || loginForm.get('name')?.touched)">
+                      <div *ngIf="loginForm.get('name')?.errors?.['required']">
+                        name is required.
+                      </div>
+                    </div>
+                  </div> -->
+
+
+                <div data-mdb-input-init class="form-outline mb-4">
+                  <label class="form-label" for="form3Example3">Email address</label>
+                  <input type="email" formControlName="email" id="form3Example3" class="form-control" />
+
+                  <div class="text-danger"
+                    *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)">
+                    <div *ngIf="loginForm.get('email')?.errors?.['required']">
+                      Email is required.
+                    </div>
+                    <div class="text-danger" *ngIf="loginForm.get('email')?.errors?.['email']">
+                      Invalid email format.
+                    </div>
+                  </div>
+                </div>
+
+
+                <div data-mdb-input-init class="form-outline mb-4">
+                  <label class="form-label" for="form3Example4">Password</label>
+                  <input [type]="hide ? 'password' : 'text'" formControlName="password" id="form3Example4"
+                    class="form-control" />
+                  <button type="button" class="btn btn-outline-secondary" (click)="toggleVisibility()">
+                    <i class="fa" [ngClass]="{'fa-eye': hide, 'fa-eye-slash': !hide}"></i>
+                  </button>
+                  <div class="text-danger"
+                    *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
+                    <div *ngIf="loginForm.get('password')?.errors?.['required']">
+                      Password is required.
+                    </div>
+                    <div class="text-danger" *ngIf="loginForm.get('password')?.errors?.['minlength']">
+                      Password must be at least 6 characters long.
+                    </div>
+                  </div>
+
+                </div>
+
+
+                <!-- <div class="form-check d-flex justify-content-center mb-4">
+  
+                    <input class="form-check-input me-2" formControlName="checkboxValue" type="checkbox" value=""
+                      id="form2Example33" checked />
+  
+                    <label class="form-check-label" for="form2Example33">
+                      Subscribe to our newsletter
+                    </label><br>
+  
+                    <div class="text-danger"
+                    *ngIf="loginForm.get('checkboxValue')?.invalid && (loginForm.get('checkboxValue')?.dirty || loginForm.get('checkboxValue')?.touched)">
+                    <div *ngIf="loginForm.get('checkboxValue')?.errors?.['required']">
+                      You must agree before submitting.
+                    </div>
+                  </div>
+  
+                  </div> -->
+
+                <button type="submit" [disabled]="loginForm.invalid" class="data-mdb-button-init data-mdb-ripple-init"
+                  class="btn btn-primary btn-block mb-4">
+                  Login
+                </button>
+
+
+                <div class="text-center">
+                  <a routerLink="/registration">
+                    <p>or sign up with:</p>
+                  </a>
+                  <button type="button" data-mdb-button-init data-mdb-ripple-init
+                    class="btn btn-link btn-floating mx-1">
+                    <i class="fab fa-facebook-f"></i>
+                  </button>
+
+                  <button type="button" data-mdb-button-init data-mdb-ripple-init
+                    class="btn btn-link btn-floating mx-1">
+                    <i class="fab fa-google"></i>
+                  </button>
+
+                  <button type="button" data-mdb-button-init data-mdb-ripple-init
+                    class="btn btn-link btn-floating mx-1">
+                    <i class="fab fa-twitter"></i>
+                  </button>
+
+                  <button type="button" data-mdb-button-init data-mdb-ripple-init
+                    class="btn btn-link btn-floating mx-1">
+                    <i class="fab fa-github"></i>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Jumbotron -->
+</section>
+<!-- Section: Design Block -->

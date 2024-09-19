@@ -1,0 +1,18 @@
+.nav-link {
+    color: #333;
+    padding: 10px 15px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-link.active, .nav-link:hover {
+    background-color: #FFA500;
+    color: #fff;
+}
+
+.nav-link i {
+    margin-right: 8px;
+}
+
+.container-fluid {
+    padding: 0 15px;
+}

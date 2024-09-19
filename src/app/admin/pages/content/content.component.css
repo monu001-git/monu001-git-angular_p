@@ -1,0 +1,23 @@
+table {
+    margin-top: 20px;
+}
+th, td {
+    text-align: center;
+}
+.btn {
+    border-radius: 0.25rem;
+}
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+.btn-danger:hover {
+    background-color: #c82333;
+}

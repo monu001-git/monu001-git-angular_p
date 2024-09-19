@@ -1,0 +1,36 @@
+<div class="container mt-3">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h5 class="mb-0 text-dark">Show Content</h5>
+        <button routerLink="/admin/add-content" class="btn btn-success">Add Content</button>
+    </div>
+
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>
+                    <button (click)="toggleStatus()" class="btn btn-sm me-2"
+                        [ngClass]="isActive ? 'btn-warning' : 'btn-success'">
+                        {{ isActive ? 'Active' : 'Inactive' }}
+                    </button>
+
+                </td>
+                <td>
+                    <button class="btn btn-primary btn-sm me-2">Update</button>
+                    <button class="btn btn-danger btn-sm">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
