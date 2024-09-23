@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,RouterModule],
+  imports: [RouterOutlet, RouterModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -13,10 +13,12 @@ export class AppComponent {
   title = 'website';
 
   constructor(private _router: Router) {
-      // if (performance.navigation.type === 1) {
-      //   this._router.navigateByUrl('**');
-      // }
-    
+    // if (performance.navigation.type === 1) {
+    //   sessionStorage.clear();
+    //   sessionStorage.removeItem('token');
+    //   this._router.navigateByUrl('**');
+    // }
+
   }
 
   // @HostListener('window:popstate', ['$event'])

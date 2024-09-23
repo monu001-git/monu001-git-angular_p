@@ -20,7 +20,7 @@ export class UserComponent implements OnInit {
     this.getUser()
   }
 
-  constructor(private service: AdminApiService, private swalService: SwalService,private _router: Router) {
+  constructor(private service: AdminApiService, private swalService: SwalService, private _router: Router) {
 
   }
 
@@ -30,7 +30,6 @@ export class UserComponent implements OnInit {
         next: (res: any) => {
           if (res.status == 200) {
             this.userData = res.data
-            // this.swalService.successAlert(res.message)
           }
         },
         error: (error: any) => {
@@ -43,7 +42,6 @@ export class UserComponent implements OnInit {
 
 
   toggleStatus(status: any, id: any) {
-
     const payload = {
       userId: id,
       status: status,
@@ -68,52 +66,27 @@ export class UserComponent implements OnInit {
 
 
   updateUserData(id: any) {
+
     const payload = {
-      id: id
-    }
+      id: id,
+    };
     this.service.updateUserData(payload).subscribe({
       next: (res: any) => {
         if (res.status == 200) {
-          console.log('res',res.data)
-
-          this._router.navigateByUrl('add-user');
-
+          this._router.navigate(['admin/update-user'], { queryParams: { id: res.data.id } });
         }
       },
       error: (error: any) => {
         if (error) {
-          this.swalService.errorAlert(error.error.message)
-
+          this.swalService.errorAlert(error.error.message);
         }
       },
     })
   }
 
-  updateUser(id: any) {
-    const payload = {
-      id: id
-    }
-    this.service.updateUser(payload).subscribe({
-      next: (res: any) => {
-        if (res.status == 200) {
-          // this.getUser()
-
-         console.log(res)
-
-
-          this.swalService.successAlert(res.message)
-        }
-      },
-      error: (error: any) => {
-        if (error) {
-          this.swalService.errorAlert(error.error.message)
-
-        }
-      },
-    })
-  }
 
   deleteUser(id: any) {
+
     const payload = {
       id: id,
     };

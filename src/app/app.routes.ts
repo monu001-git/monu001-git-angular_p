@@ -19,22 +19,10 @@ export const routes: Routes = [
     {
         path: 'login',
         loadComponent: () => import('../app/Auth/login/login.component').then((comp) => comp.LoginComponent)
-    }
-    ,
-    {
-        path: 'registration',
-        loadComponent: () => import('../app/Auth/registration/registration.component').then((comp) => comp.RegistrationComponent)
     },
     {
         path: '**',
         loadComponent: () => import('../app/error/error.component').then((comp) => comp.ErrorComponent)
     }
-
-
-
-
-
-
-
 
 ];

@@ -69,24 +69,6 @@
                 </div>
 
 
-                <!-- <div class="form-check d-flex justify-content-center mb-4">
-  
-                    <input class="form-check-input me-2" formControlName="checkboxValue" type="checkbox" value=""
-                      id="form2Example33" checked />
-  
-                    <label class="form-check-label" for="form2Example33">
-                      Subscribe to our newsletter
-                    </label><br>
-  
-                    <div class="text-danger"
-                    *ngIf="loginForm.get('checkboxValue')?.invalid && (loginForm.get('checkboxValue')?.dirty || loginForm.get('checkboxValue')?.touched)">
-                    <div *ngIf="loginForm.get('checkboxValue')?.errors?.['required']">
-                      You must agree before submitting.
-                    </div>
-                  </div>
-  
-                  </div> -->
-
                 <button type="submit" [disabled]="loginForm.invalid" class="data-mdb-button-init data-mdb-ripple-init"
                   class="btn btn-primary btn-block mb-4">
                   Login
@@ -94,9 +76,7 @@
 
 
                 <div class="text-center">
-                  <a routerLink="/registration">
-                    <p>or sign up with:</p>
-                  </a>
+                 
                   <button type="button" data-mdb-button-init data-mdb-ripple-init
                     class="btn btn-link btn-floating mx-1">
                     <i class="fab fa-facebook-f"></i>

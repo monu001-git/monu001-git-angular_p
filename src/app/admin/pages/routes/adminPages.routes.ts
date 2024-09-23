@@ -14,12 +14,10 @@ export const adminPages: Routes = [
             import('../user/add-user/add-user.component').then((comp) => comp.AddUserComponent),
     },
     {
-        path: 'update-user/:id',
+        path: 'update-user',
         loadComponent: () =>
             import('../user/add-user/add-user.component').then((comp) => comp.AddUserComponent),
     },
-    
-   
     {
         path: 'content',
         loadComponent: () =>
