@@ -152,23 +152,30 @@
 
 
 
-        <div class="mb-3">
-            <label for="fileUpload" class="form-label text-dark">Upload Profile</label><br>
-            <input type="file" formControlName="file" (change)="onFileSelected($event)" id="fileUpload" />
+        <div class="rows">
+            <div class="col-6">
 
-            <div *ngIf="imageData">
-                <img [src]="imageData" alt="User Image" />
+                <div class="mb-3">
+                    <label for="fileUpload" class="form-label text-dark">Upload Profile</label><br>
+                    <input type="file" formControlName="file" (change)="onFileSelected($event)" id="fileUpload" />
+
+
+                    <div class="text-danger"
+                        *ngIf="submitForm.get('file')?.invalid && (submitForm.get('file')?.dirty || submitForm.get('file')?.touched)">
+                        <div *ngIf="submitForm.get('file')?.errors?.['required']">
+                            profile is required.
+                        </div>
+                    </div>
+                </div>
             </div>
-            
-            <div class="text-danger"
-                *ngIf="submitForm.get('file')?.invalid && (submitForm.get('file')?.dirty || submitForm.get('file')?.touched)">
-                <div *ngIf="submitForm.get('file')?.errors?.['required']">
-                    profile is required.
+            <div class="col-6">
+                <div style="text-align: right;">
+                    <div *ngIf="imageData">
+                        <img [src]="imageData" alt="User Image" style="max-width: 70%; height: 70;" />
+                    </div>
                 </div>
             </div>
         </div>
-
-
         <button type="submit" class="btn btn-primary">Submit</button>
 
     </form>

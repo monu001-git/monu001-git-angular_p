@@ -27,7 +27,22 @@ export class AdminApiService {
   }
 
   addEditUser(data: any) {
-    return this.http.post('http://localhost:8000/api/add-edit-user', data );
+    return this.http.post('http://localhost:8000/api/add-edit-user', data);
   }
+
+
+  //menu url
+  getParentId() {
+    return this.http.get('http://localhost:8000/api/parent-id');
+  }
+
+  addEditMenu(data: any) {
+    return this.http.post('http://localhost:8000/api/add-edit-menu', data);
+  }
+  getMenu(){
+    return this.http.get('http://localhost:8000/api/menu-tree');
+  }
+
+
 
 }

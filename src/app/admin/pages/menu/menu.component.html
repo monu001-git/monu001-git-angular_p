@@ -4,32 +4,75 @@
         <button routerLink="/admin/add-menu" class="btn btn-success">Add Menu</button>
     </div>
 
-    <table class="table table-bordered table-hover">
-        <thead class="table-dark">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Status</th>
-                <th scope="col">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>
-                    <button (click)="toggleStatus()" class="btn btn-sm me-2"
-                        [ngClass]="isActive ? 'btn-warning' : 'btn-success'">
-                        {{ isActive ? 'Active' : 'Inactive' }}
-                    </button>
-                </td>
-                <td>
-                    <button class="btn btn-primary btn-sm me-2">Update</button>
-                    <button class="btn btn-danger btn-sm">Delete</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+
+    @if(menu && menu.length > 0) {
+    @for (item of menu; track $index) {
+        <ul class="lk-tree-menu">
+            <li>
+                @if(item.children && item.children.length > 0){
+                <input type="checkbox" checked="checked" id="smCB-{{ $index }}" />
+                <label class="tree_label" for="smCB-{{ $index }}"><a >{{ item.name }}</a></label>
+                @for (child of item.children; track $index) {
+                <ul>
+                    <li>
+                        @if(child.children && child.children.length > 0){
+                        <input type="checkbox" checked="checked" id="smCB-{{ $index }}" />
+                        <label class="tree_label" for="smCB-{{ $index }}"> <a >{{ child.name }} </a></label>
+                        @for (subChild of child.children; track $index) {
+    
+                        <ul>
+                            <li>
+                                @if(subChild.children && subChild.children.length > 0){
+                                <input type="checkbox" checked="checked" id="smCB-{{ $index }}" />
+                                <label class="tree_label" for="smCB-{{ $index }}">  <a > {{ subChild.name }}</a></label>
+                                @for (superSubChild of subChild.children; track $index) {
+    
+                                    <!-- start   -->
+                                <ul>
+                                    <li>
+                                        @if(superSubChild.children && superSubChild.children.length > 0){
+                                        <input type="checkbox" checked="checked" id="smCB-{{ $index }}" />
+                                        <label class="tree_label" for="smCB-{{ $index }}"> <a> {{ superSubChild.name }}</a></label>
+                                        @for (supersuperSubChild of superSubChild.children; track $index) {
+    
+                                            <!-- ui-ui paste on this middel on variabel -->
+                                        }
+                                        }@else{
+                                        <input type="checkbox" checked="checked" id="smCB-{{ $index }}" />
+                                        <label class="tree_label" for="smCB-{{ $index }}"> <a href='{{superSubChild.url}}'>{{ superSubChild.name }}</a></label>
+                                        }
+                                    </li>
+    
+                                </ul>
+    
+                                <!-- end -->
+                                }
+                                }@else{
+                                <input type="checkbox" checked="checked" id="smCB-{{ $index }}" />
+                                <label class="tree_label" for="smCB-{{ $index }}"> <a href='{{subChild.url}}'>{{ subChild.name }}</a></label>
+                                }
+                            </li>
+                        </ul>
+                        }
+                        }@else{
+                        <input type="checkbox" checked="checked" id="smCB-{{ $index }}" />
+                        <label class="tree_label" for="smCB-{{ $index }}"> <a href='{{child.url}}'>{{ child.name }}</a></label>
+                        }
+                    </li>
+                </ul>
+                }
+                }@else{
+                <input type="checkbox" checked="checked" id="smCB-{{ $index }}" />
+                <label class="tree_label" for="smCB-{{ $index }}"> <a href='{{item.url}}'>{{ item.name }}</a></label>
+                }
+            </li>
+        </ul>
+    
+        }
+
+    }@else{
+        <p>No items available in the menu.</p>
+    }   
+           
+
 </div>
