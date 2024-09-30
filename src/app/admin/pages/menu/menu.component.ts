@@ -36,7 +36,7 @@ export class MenuComponent implements OnInit {
         next: (res: any) => {
           if (res.status == 200) {
             this.menu = res.data
-     
+            this.swalService.successAlert(res.message)
           }
         },
         error: (error: any) => {

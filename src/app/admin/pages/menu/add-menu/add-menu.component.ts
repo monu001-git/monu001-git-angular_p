@@ -28,15 +28,16 @@ export class AddMenuComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getParentId()
+    this.parentMaster()
   }
 
-  getParentId() {
-    this.service.getParentId()
+  parentMaster() {
+    this.service.parentMaster()
       .subscribe({
         next: (res: any) => {
           if (res.status == 200) {
             this.parentId = res.data
+           // this.swalService.successAlert(res.message)
           }
         },
         error: (error: any) => {
@@ -86,6 +87,7 @@ export class AddMenuComponent implements OnInit {
         next: (res: any) => {
           if (res.status == 200) {
             this._router.navigateByUrl('/admin/menu')
+            this.swalService.successAlert(res.message)
           }
 
         }

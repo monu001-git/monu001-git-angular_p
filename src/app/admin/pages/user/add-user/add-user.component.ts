@@ -68,10 +68,15 @@ export class AddUserComponent implements OnInit {
           this.submitForm.patchValue({ gender: res.data.gender });
           this.submitForm.patchValue({ interest: res.data.interest });
 
-        
-       //  this.imageData = res.data.file ? '/uploads/' + res.data.file : null;
-
        this.imageData = res.data.file ? `http://localhost:8000/uploads/${res.data.file}` : null;
+
+       if (this.imageData) {
+        this.submitForm.get('file')?.clearValidators();  // Clear validators if updating
+      } else {
+        this.submitForm.get('file')?.setValidators([Validators.required]);  // Set required validator if no image exists
+      }
+      
+      this.submitForm.get('file')?.updateValueAndValidity();
 
         }
       },
@@ -103,6 +108,7 @@ export class AddUserComponent implements OnInit {
   onFileSelected(event: any): void {
     this.selectedFile = event.target.files[0];
   }
+  
 
 
   // onSubmit() {
@@ -154,6 +160,7 @@ export class AddUserComponent implements OnInit {
       formData.append('gender', this.submitForm.value.gender);
       formData.append('interest', this.submitForm.value.interest);
       formData.append('status', this.submitForm.value.status);
+
       if (this.selectedFile) {
         formData.append('file', this.selectedFile, this.selectedFile.name); 
       }
@@ -161,6 +168,7 @@ export class AddUserComponent implements OnInit {
       this.service.addEditUser(formData).subscribe({
         next: (res: any) => {
           if (res.status === 200) {
+            this.swalService.successAlert(res.message)
             this._router.navigateByUrl('/admin/user');
           }
         },

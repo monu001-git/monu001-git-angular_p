@@ -32,8 +32,8 @@ export class AdminApiService {
 
 
   //menu url
-  getParentId() {
-    return this.http.get('http://localhost:8000/api/parent-id');
+  parentMaster() {
+    return this.http.get('http://localhost:8000/api/parentMaster');
   }
 
   addEditMenu(data: any) {
@@ -43,6 +43,11 @@ export class AdminApiService {
     return this.http.get('http://localhost:8000/api/menu-tree');
   }
 
+
+  //content
+  addEditContent(data: any){
+    return this.http.post('http://localhost:8000/api/add-edit-content', data);
+  }
 
 
 }

@@ -3,62 +3,55 @@
         <h5 class="mb-0 text-dark">Add Content</h5>
         <button routerLink="/admin/content" class="btn btn-success">Show Content</button>
     </div>
+   
+   
+     
+    <form [formGroup]="submitForm" (ngSubmit)="onSubmit()" class="mt-4">
+        <div formArrayName="items">
+            <div *ngFor="let item of items.controls; let i = index" [formGroupName]="i" class="form-group row mb-3">
+                <div class="col-3">
+                    <input type="text" formControlName="title" class="form-control"
+                        placeholder="Enter item {{ i + 1 }}" />
+                    <div class="text-danger"
+                        *ngIf="submitForm.get('title')?.invalid && (submitForm.get('title')?.dirty || submitForm.get('title')?.touched)">
+                        <div *ngIf="submitForm.get('title')?.errors?.['required']">
+                            URL is required.
+                        </div>
+                    </div>
 
-    <form>
-        <div class="mb-3">
-            <label for="firstName" class="form-label text-dark">First Name</label>
-            <input type="text" class="form-control" id="firstName" placeholder="Enter first name">
-        </div>
+                </div>
+                <div class="col-3">
+                    <input type="text" formControlName="alt" class="form-control"
+                        placeholder="Enter item {{ i + 1 }}" />
 
-        <div class="mb-3">
-            <label for="lastName" class="form-label text-dark">Last Name</label>
-            <input type="text" class="form-control" id="lastName" placeholder="Enter last name">
-        </div>
-
-        <div class="mb-3">
-            <label for="email" class="form-label text-dark">Email address</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter email">
-        </div>
-
-        <div class="mb-3">
-            <label for="description" class="form-label text-dark">Description</label>
-            <textarea class="form-control" id="description" rows="3" placeholder="Enter description"></textarea>
-        </div>
-
-        <div class="mb-3">
-            <label for="dropdown" class="form-label text-dark">Select Option</label>
-            <select class="form-select" id="dropdown">
-                <option value="" disabled selected>Select an option</option>
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
-            </select>
-        </div>
-
-        <fieldset class="mb-3">
-            <legend class="col-form-label text-dark">Gender</legend>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="gender" id="male" value="male">
-                <label class="form-check-label" for="male">Male</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="gender" id="female" value="female">
-                <label class="form-check-label" for="female">Female</label>
-            </div>
-        </fieldset>
-
-        <div class="mb-3">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="subscribe" value="yes">
-                <label class="form-check-label" for="subscribe">Subscribe to newsletter</label>
+                    <div class="text-danger"
+                        *ngIf="submitForm.get('alt')?.invalid && (submitForm.get('alt')?.dirty || submitForm.get('alt')?.touched)">
+                        <div *ngIf="submitForm.get('alt')?.errors?.['required']">
+                            URL is required.
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-3">
+                    <input type="file" formControlName="file" class="form-control"  />
+                    <div class="text-danger"
+                        *ngIf="submitForm.get('file')?.invalid && (submitForm.get('file')?.dirty || submitForm.get('file')?.touched)">
+                        <div *ngIf="submitForm.get('file')?.errors?.['required']">
+                            URL is required.
+                        </div>
+                    </div>
+                </div> -->
+                <div class="col-3">
+                    <button type="button" class="btn btn-danger" (click)="removeItem(i)" [disabled]="i === 0">
+                        Delete
+                    </button>
+                </div>
             </div>
         </div>
+        <button type="button" class="btn btn-primary me-2" (click)="addItem()">Add Input</button><br>
 
-        <div class="mb-3">
-            <label for="fileUpload" class="form-label text-dark">Upload File</label>
-            <input class="form-control" type="file" id="fileUpload">
-        </div>
-
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-success">Submit</button>
     </form>
+
+
+
 </div>
