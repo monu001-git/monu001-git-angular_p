@@ -3,9 +3,45 @@
         <h5 class="mb-0 text-dark">Add Content</h5>
         <button routerLink="/admin/content" class="btn btn-success">Show Content</button>
     </div>
-   
-   
-     
+
+
+
+    <h5 style="text-align: center;">Content </h5>
+    <form [formGroup]="contentForm" (ngSubmit)="onSubmitContent()" class="mt-4">
+        <div class="mb-3">
+            <label for="order" class="form-label text-dark">title</label>
+            <input type="number" class="form-control" formControlName="title" id="order"
+                placeholder="Enter short Order">
+
+            <!-- <div class="text-danger"
+                *ngIf="submitForm.get('order')?.invalid && (submitForm.get('order')?.dirty || submitForm.get('order')?.touched)">
+                <div *ngIf="submitForm.get('order')?.errors?.['required']">
+                    short Order is required.
+                </div>
+            </div> -->
+        </div>
+
+        <div class="mb-3">
+            <label for="order" class="form-label text-dark">Content</label>
+            <textarea class="form-control" formControlName="content" id="order"
+                placeholder="Enter short Order"></textarea>
+
+            <!-- <div class="text-danger"
+                *ngIf="submitForm.get('order')?.invalid && (submitForm.get('order')?.dirty || submitForm.get('order')?.touched)">
+                <div *ngIf="submitForm.get('order')?.errors?.['required']">
+                    short Order is required.
+                </div>
+            </div> -->
+        </div>
+
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+
+
+
+    <br><br><hr> <h5 style="text-align:center;">Image</h5>
+
+
     <form [formGroup]="submitForm" (ngSubmit)="onSubmit()" class="mt-4">
         <div formArrayName="items">
             <div *ngFor="let item of items.controls; let i = index" [formGroupName]="i" class="form-group row mb-3">
@@ -31,15 +67,16 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="col-3">
-                    <input type="file" formControlName="file" class="form-control"  />
+                <div class="col-3">
+                    <input type="file" formControlName="file" class="form-control"
+                        (change)="onFileSelected($event, i)" />
                     <div class="text-danger"
                         *ngIf="submitForm.get('file')?.invalid && (submitForm.get('file')?.dirty || submitForm.get('file')?.touched)">
                         <div *ngIf="submitForm.get('file')?.errors?.['required']">
                             URL is required.
                         </div>
                     </div>
-                </div> -->
+                </div>
                 <div class="col-3">
                     <button type="button" class="btn btn-danger" (click)="removeItem(i)" [disabled]="i === 0">
                         Delete
@@ -47,11 +84,10 @@
                 </div>
             </div>
         </div>
-        <button type="button" class="btn btn-primary me-2" (click)="addItem()">Add Input</button><br>
+        <button type="button" class="btn btn-primary me-2" (click)="addItem()">Add Input</button>
 
         <button type="submit" class="btn btn-success">Submit</button>
     </form>
-
 
 
 </div>

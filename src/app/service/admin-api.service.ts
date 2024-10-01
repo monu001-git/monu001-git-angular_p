@@ -46,6 +46,7 @@ export class AdminApiService {
 
   //content
   addEditContent(data: any){
+    console.log('data',data)
     return this.http.post('http://localhost:8000/api/add-edit-content', data);
   }
 
