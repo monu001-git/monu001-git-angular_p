@@ -4,90 +4,101 @@
         <button routerLink="/admin/content" class="btn btn-success">Show Content</button>
     </div>
 
-
-
-    <h5 style="text-align: center;">Content </h5>
-    <form [formGroup]="contentForm" (ngSubmit)="onSubmitContent()" class="mt-4">
-        <div class="mb-3">
-            <label for="order" class="form-label text-dark">title</label>
-            <input type="number" class="form-control" formControlName="title" id="order"
-                placeholder="Enter short Order">
-
-            <!-- <div class="text-danger"
-                *ngIf="submitForm.get('order')?.invalid && (submitForm.get('order')?.dirty || submitForm.get('order')?.touched)">
-                <div *ngIf="submitForm.get('order')?.errors?.['required']">
-                    short Order is required.
-                </div>
-            </div> -->
-        </div>
-
-        <div class="mb-3">
-            <label for="order" class="form-label text-dark">Content</label>
-            <textarea class="form-control" formControlName="content" id="order"
-                placeholder="Enter short Order"></textarea>
-
-            <!-- <div class="text-danger"
-                *ngIf="submitForm.get('order')?.invalid && (submitForm.get('order')?.dirty || submitForm.get('order')?.touched)">
-                <div *ngIf="submitForm.get('order')?.errors?.['required']">
-                    short Order is required.
-                </div>
-            </div> -->
-        </div>
-
-        <button type="submit" class="btn btn-success">Submit</button>
-    </form>
-
-
-
-    <br><br><hr> <h5 style="text-align:center;">Image</h5>
-
-
+    <h5 style="text-align: center;">Content</h5>
     <form [formGroup]="submitForm" (ngSubmit)="onSubmit()" class="mt-4">
+        <!-- Title -->
+        <div class="mb-3">
+            <label for="title" class="form-label text-dark">Title</label>
+            <input type="text" class="form-control" formControlName="title" id="title" placeholder="Enter the title">
+            <div class="text-danger" *ngIf="submitForm.get('title')?.invalid && (submitForm.get('title')?.dirty || submitForm.get('title')?.touched)">
+                <div *ngIf="submitForm.get('title')?.errors?.['required']">This Field is required.</div>
+            </div>
+        </div>
+
+        <!-- Description -->
+        <div class="mb-3">
+            <label for="description" class="form-label text-dark">Content</label>
+            <textarea class="form-control" formControlName="description" id="description" placeholder="Enter the content"></textarea>
+            <div class="text-danger" *ngIf="submitForm.get('description')?.invalid && (submitForm.get('description')?.dirty || submitForm.get('description')?.touched)">
+                <div *ngIf="submitForm.get('description')?.errors?.['required']">This Field is required.</div>
+            </div>
+        </div>
+
+        <!-- Image Upload -->
+        <div class="mb-3">
+            <label for="image" class="form-label text-dark">Image</label>
+            <input type="file" class="form-control" formControlName="image" id="image">
+            <div class="text-danger" *ngIf="submitForm.get('image')?.invalid && (submitForm.get('image')?.dirty || submitForm.get('image')?.touched)">
+                <div *ngIf="submitForm.get('image')?.errors?.['required']">This Field is required.</div>
+            </div>
+        </div>
+
+        <!-- Hidden Fields -->
+        <input type="hidden" formControlName="status">
+        <input type="hidden" formControlName="order">
+        
+        <br><hr>
+
+        <!-- Image Items Section -->
+        <h5 style="text-align:center;">Image</h5>
         <div formArrayName="items">
             <div *ngFor="let item of items.controls; let i = index" [formGroupName]="i" class="form-group row mb-3">
                 <div class="col-3">
-                    <input type="text" formControlName="title" class="form-control"
-                        placeholder="Enter item {{ i + 1 }}" />
-                    <div class="text-danger"
-                        *ngIf="submitForm.get('title')?.invalid && (submitForm.get('title')?.dirty || submitForm.get('title')?.touched)">
-                        <div *ngIf="submitForm.get('title')?.errors?.['required']">
-                            URL is required.
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-3">
-                    <input type="text" formControlName="alt" class="form-control"
-                        placeholder="Enter item {{ i + 1 }}" />
-
-                    <div class="text-danger"
-                        *ngIf="submitForm.get('alt')?.invalid && (submitForm.get('alt')?.dirty || submitForm.get('alt')?.touched)">
-                        <div *ngIf="submitForm.get('alt')?.errors?.['required']">
-                            URL is required.
-                        </div>
+                    <input type="text" formControlName="imageTitle" class="form-control" placeholder="Enter item {{ i + 1 }}" />
+                    <div class="text-danger" *ngIf="item.get('imageTitle')?.invalid && (item.get('imageTitle')?.dirty || item.get('imageTitle')?.touched)">
+                        <div *ngIf="item.get('imageTitle')?.errors?.['required']">Title is required.</div>
                     </div>
                 </div>
                 <div class="col-3">
-                    <input type="file" formControlName="file" class="form-control"
-                        (change)="onFileSelected($event, i)" />
-                    <div class="text-danger"
-                        *ngIf="submitForm.get('file')?.invalid && (submitForm.get('file')?.dirty || submitForm.get('file')?.touched)">
-                        <div *ngIf="submitForm.get('file')?.errors?.['required']">
-                            URL is required.
-                        </div>
+                    <input type="text" formControlName="imageAlt" class="form-control" placeholder="Enter item {{ i + 1 }}" />
+                    <div class="text-danger" *ngIf="item.get('imageAlt')?.invalid && (item.get('imageAlt')?.dirty || item.get('imageAlt')?.touched)">
+                        <div *ngIf="item.get('imageAlt')?.errors?.['required']">Alt text is required.</div>
                     </div>
                 </div>
                 <div class="col-3">
-                    <button type="button" class="btn btn-danger" (click)="removeItem(i)" [disabled]="i === 0">
-                        Delete
-                    </button>
+                    <!-- (change)="onFileSelected($event, i)" -->
+                    <input type="file" formControlName="imageFile" class="form-control"  />
+                    <div class="text-danger" *ngIf="item.get('imageFile')?.invalid && (item.get('imageFile')?.dirty || item.get('imageFile')?.touched)">
+                        <div *ngIf="item.get('imageFile')?.errors?.['required']">File is required.</div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <button type="button" class="btn btn-danger" (click)="removeItem(i)" [disabled]="i === 0">Delete</button>
                 </div>
             </div>
         </div>
         <button type="button" class="btn btn-primary me-2" (click)="addItem()">Add Input</button>
 
-        <button type="submit" class="btn btn-success">Submit</button>
+        <!-- Video Items Section -->
+        <h5 style="text-align:center;">Video</h5>
+        <div formArrayName="videoItems">
+            <div *ngFor="let item of videoItems.controls; let i = index" [formGroupName]="i" class="form-group row mb-3">
+                <div class="col-3">
+                    <input type="text" formControlName="videoTitle" class="form-control" placeholder="Enter video title {{ i + 1 }}" />
+                    <div class="text-danger" *ngIf="item.get('videoTitle')?.invalid && (item.get('videoTitle')?.dirty || item.get('videoTitle')?.touched)">
+                        <div *ngIf="item.get('videoTitle')?.errors?.['required']">Title is required.</div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <input type="text" formControlName="videoAlt" class="form-control" placeholder="Enter alt text {{ i + 1 }}" />
+                    <div class="text-danger" *ngIf="item.get('videoAlt')?.invalid && (item.get('videoAlt')?.dirty || item.get('videoAlt')?.touched)">
+                        <div *ngIf="item.get('videoAlt')?.errors?.['required']">Alt text is required.</div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <input type="url" formControlName="videoUrl" class="form-control" placeholder="Enter video URL" />
+                    <div class="text-danger" *ngIf="item.get('videoUrl')?.invalid && (item.get('videoUrl')?.dirty || item.get('videoUrl')?.touched)">
+                        <div *ngIf="item.get('videoUrl')?.errors?.['required']">URL is required.</div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <button type="button" class="btn btn-danger" (click)="removeVideoItem(i)" [disabled]="i === 0">Delete</button>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary me-2" (click)="addVideoItem()">Add Video</button><br><br>
+
+        <!-- Submit Button -->
+        <button type="submit" style="text-align: center;" class="btn btn-success">Submit</button>
     </form>
-
-
 </div>

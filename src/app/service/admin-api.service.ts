@@ -39,16 +39,21 @@ export class AdminApiService {
   addEditMenu(data: any) {
     return this.http.post('http://localhost:8000/api/add-edit-menu', data);
   }
-  getMenu(){
+  getMenu() {
     return this.http.get('http://localhost:8000/api/menu-tree');
   }
 
-
   //content
-  addEditContent(data: any){
-    console.log('data',data)
+  addEditContent(data: any) {
     return this.http.post('http://localhost:8000/api/add-edit-content', data);
   }
 
+  getContent() {
+    return this.http.get('http://localhost:8000/api/content');
+  }
+
+  deleteContent(data: any) {
+    return this.http.delete('http://localhost:8000/api/delete-content', { body: { id: data.id } });
+  }
 
 }
