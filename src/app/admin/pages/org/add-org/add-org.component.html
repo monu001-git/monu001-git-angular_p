@@ -1,0 +1,102 @@
+<div class="container mt-3">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h5 class="mb-0 text-dark">Add Organization</h5>
+        <button routerLink="/admin/add-org" class="btn btn-success">Add Organization</button>
+    </div>
+
+
+    <form [formGroup]="submitForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="name" class="form-label text-dark">Name</label>
+            <input type="text" formControlName="name" class="form-control" id="name" placeholder="Enter Your Org Name" >
+            <div class="text-danger"
+                *ngIf="submitForm.get('name')?.invalid && (submitForm.get('name')?.dirty || submitForm.get('name')?.touched)">
+                <div *ngIf="submitForm.get('name')?.errors?.['required']">
+                    Name is required.
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="about_us" class="form-label text-dark">About Us</label>
+            <textarea type="text" formControlName="about_us" class="form-control" id="about_us" ></textarea>
+            <div class="text-danger"
+                *ngIf="submitForm.get('about_us')?.invalid && (submitForm.get('about_us')?.dirty || submitForm.get('about_us')?.touched)">
+                <div *ngIf="submitForm.get('about_us')?.errors?.['required']">
+                    About Us is required.
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label text-dark">Email</label>
+            <input type="email" formControlName="email" class="form-control" id="email" >
+            <div class="text-danger"
+                *ngIf="submitForm.get('email')?.invalid && (submitForm.get('email')?.dirty || submitForm.get('email')?.touched)">
+                <div *ngIf="submitForm.get('email')?.errors?.['required']">
+                    Email is required.
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="phone" class="form-label text-dark">Phone</label>
+            <input type="number" formControlName="phone" class="form-control" id="phone" >
+            <div class="text-danger"
+                *ngIf="submitForm.get('phone')?.invalid && (submitForm.get('phone')?.dirty || submitForm.get('phone')?.touched)">
+                <div *ngIf="submitForm.get('phone')?.errors?.['required']">
+                    phone is required.
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="facebook" class="form-label text-dark">Facebook</label>
+            <input type="url" formControlName="facebook" class="form-control" id="facebook" >
+            <div class="text-danger"
+                *ngIf="submitForm.get('facebook')?.invalid && (submitForm.get('facebook')?.dirty || submitForm.get('facebook')?.touched)">
+                <div *ngIf="submitForm.get('facebook')?.errors?.['required']">
+                    Facebook is required.
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="facebook_title" class="form-label text-dark">Facebook Title</label>
+            <input type="text" formControlName="facebook_title" class="form-control" id="facebook_title" >
+            <div class="text-danger"
+                *ngIf="submitForm.get('facebook_title')?.invalid && (submitForm.get('facebook_title')?.dirty || submitForm.get('facebook_title')?.touched)">
+                <div *ngIf="submitForm.get('facebook_title')?.errors?.['required']">
+                    facebook title is required.
+                </div>
+            </div>
+        </div>
+
+
+        <div class="mb-3">
+            <label for="instagram" class="form-label text-dark">Instagram</label>
+            <input type="url" formControlName="instagram" class="form-control" id="facebook" >
+            <div class="text-danger"
+                *ngIf="submitForm.get('instagram')?.invalid && (submitForm.get('instagram')?.dirty || submitForm.get('instagram')?.touched)">
+                <div *ngIf="submitForm.get('instagram')?.errors?.['required']">
+                    Facebook is required.
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="instagram_title" class="form-label text-dark">instagram Title</label>
+            <input type="text" formControlName="instagram_title" class="form-control" id="instagram_title" >
+            <div class="text-danger"
+                *ngIf="submitForm.get('instagram_title')?.invalid && (submitForm.get('instagram_title')?.dirty || submitForm.get('instagram_title')?.touched)">
+                <div *ngIf="submitForm.get('instagram_title')?.errors?.['required']">
+                    instagram title is required.
+                </div>
+            </div>
+        </div>
+
+
+
+    
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+
+</div>

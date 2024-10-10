@@ -17,6 +17,7 @@ export class LoginComponent {
 
   loginForm !: FormGroup;
   hide = true;
+  login_time: any;
 
   constructor(private _services: AdminApiService, private _fb: FormBuilder, private _route: Router, private swalService: SwalService) {
     this.loginForm = this.getAllformControlls();
@@ -51,6 +52,7 @@ export class LoginComponent {
         .subscribe({
           next: (res: any) => {
             if (res.status == 'success') {
+             this.login_time = res.login_time
               this.swalService.successAlert('login successfully')
               sessionStorage.setItem('token', res.authorisation.token);
               this._route.navigateByUrl('admin');

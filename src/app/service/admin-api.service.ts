@@ -30,7 +30,6 @@ export class AdminApiService {
     return this.http.post('http://localhost:8000/api/add-edit-user', data);
   }
 
-
   //menu url
   parentMaster() {
     return this.http.get('http://localhost:8000/api/parentMaster');
@@ -55,5 +54,25 @@ export class AdminApiService {
   deleteContent(data: any) {
     return this.http.delete('http://localhost:8000/api/delete-content', { body: { id: data.id } });
   }
+
+
+  mailSend(data: any) {
+    return this.http.post('http://localhost:8000/api/send-mail', data);
+  }
+
+
+  //org
+  addEditOrg(data: any) {
+    return this.http.post('http://localhost:8000/api/add-edit-org', data);
+  }
+
+  getOrg() {
+    return this.http.get('http://localhost:8000/api/org');
+  }
+
+  deleteOrg(data: any) {
+    return this.http.delete('http://localhost:8000/api/delete-org', { body: { id: data.id } });
+  }
+
 
 }

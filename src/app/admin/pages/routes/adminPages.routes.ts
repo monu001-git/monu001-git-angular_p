@@ -38,4 +38,39 @@ export const adminPages: Routes = [
         loadComponent: () =>
             import('../menu/add-menu/add-menu.component').then((comp) => comp.AddMenuComponent),
     },
+
+
+    {
+        path: 'banner',
+        loadComponent: () =>
+            import('../banner/banner.component').then((comp) => comp.BannerComponent),
+    },
+    {
+        path: 'add-banner',
+        loadComponent: () =>
+            import('../banner/add-banner/add-banner.component').then((comp) => comp.AddBannerComponent),
+    },
+    {
+        path: 'org',
+        loadComponent: () =>
+            import('../org/org.component').then((comp) => comp.OrgComponent),
+    },
+    {
+        path: 'add-org',
+        loadComponent: () =>
+            import('../org/add-org/add-org.component').then((comp) => comp.AddOrgComponent),
+    },
+
+    {
+        path: 'mail',
+        loadComponent: () =>
+            import('../../issue-mail/issue-mail.component').then((comp) => comp.IssueMailComponent),
+
+    },
+    {
+        path: 'add-mail',
+        loadComponent: () =>
+            import('../../issue-mail/add-issue-mail/add-issue-mail.component').then((comp) => comp.AddIssueMailComponent),
+
+    }
 ];

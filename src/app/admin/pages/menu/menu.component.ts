@@ -28,15 +28,13 @@ export class MenuComponent implements OnInit {
     this.getMenu()
   }
 
-
-
   getMenu() {
     this.service.getMenu()
       .subscribe({
         next: (res: any) => {
           if (res.status == 200) {
             this.menu = res.data
-            this.swalService.successAlert(res.message)
+           // this.swalService.successAlert(res.message)
           }
         },
         error: (error: any) => {

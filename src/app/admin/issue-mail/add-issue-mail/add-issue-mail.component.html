@@ -1,0 +1,54 @@
+<div class="container mt-3">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <h5 class="mb-0 text-dark">Send Mail</h5>
+
+        <button routerLink="/admin/banner" class="btn btn-success">Show Mail</button>
+    </div>
+
+
+
+    <form [formGroup]="submitForm" (ngSubmit)="onSubmit()">
+
+        <div class="mb-3">
+            <label for="mail" class="form-label text-dark">Mail</label>
+            <input type="email" class="form-control" formControlName="mail" id="mail" placeholder="Enter Your title">
+
+            <div class="text-danger"
+                *ngIf="submitForm.get('mail')?.invalid && (submitForm.get('mail')?.dirty || submitForm.get('mail')?.touched)">
+                <div *ngIf="submitForm.get('mail')?.errors?.['required']">
+                    mail is required.
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="title" class="form-label text-dark">Title</label>
+            <input type="text" class="form-control" formControlName="title" id="title" placeholder="Enter Your title">
+
+            <div class="text-danger"
+                *ngIf="submitForm.get('title')?.invalid && (submitForm.get('title')?.dirty || submitForm.get('title')?.touched)">
+                <div *ngIf="submitForm.get('title')?.errors?.['required']">
+                    Title is required.
+                </div>
+            </div>
+        </div>
+
+
+        <div class="mb-3">
+            <label for="content" class="form-label text-dark">Content</label>
+            <textarea class="form-control" formControlName="content" id="content"
+                placeholder="Enter Your content"></textarea>
+
+            <div class="text-danger"
+                *ngIf="submitForm.get('content')?.invalid && (submitForm.get('content')?.dirty || submitForm.get('content')?.touched)">
+                <div *ngIf="submitForm.get('content')?.errors?.['required']">
+                    Content is required.
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>
