@@ -10,12 +10,12 @@
 
     <form [formGroup]="submitForm" (ngSubmit)="onSubmit()">
         <div class="mb-3">
-            <label for="firstName" class="form-label text-dark">First Name</label>
-            <input type="text" formControlName="fname" class="form-control" id="firstName"
+            <label for="name" class="form-label text-dark">First Name</label>
+            <input type="text" formControlName="name" class="form-control" id="name"
                 placeholder="Enter first name">
             <div class="text-danger"
-                *ngIf="submitForm.get('fname')?.invalid && (submitForm.get('fname')?.dirty || submitForm.get('fname')?.touched)">
-                <div *ngIf="submitForm.get('fname')?.errors?.['required']">
+                *ngIf="submitForm.get('name')?.invalid && (submitForm.get('name')?.dirty || submitForm.get('name')?.touched)">
+                <div *ngIf="submitForm.get('name')?.errors?.['required']">
                     First Name is required.
                 </div>
             </div>
@@ -28,19 +28,6 @@
         }
         <input type="hidden" formControlName="status">
 
-
-        <div class="mb-3">
-            <label for="lastName" class="form-label text-dark">Last Name</label>
-            <input type="text" formControlName="lname" class="form-control" id="lastName" placeholder="Enter last name">
-
-            <div class="text-danger"
-                *ngIf="submitForm.get('lname')?.invalid && (submitForm.get('lname')?.dirty || submitForm.get('lname')?.touched)">
-                <div *ngIf="submitForm.get('lname')?.errors?.['required']">
-                    Last Name is required.
-                </div>
-            </div>
-
-        </div>
 
         <div class="mb-3">
             <label for="email" class="form-label text-dark">Email address</label>

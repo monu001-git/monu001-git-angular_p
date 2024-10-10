@@ -58,7 +58,7 @@ export class AddUserComponent implements OnInit {
             this.submitForm.patchValue({ id: res.data.id });
             this.submitForm.patchValue({ password: res.data.password });
           }
-          this.submitForm.patchValue({ fname: res.data.fname });
+          this.submitForm.patchValue({ name: res.data.name });
           this.submitForm.patchValue({ email: res.data.email });
           this.submitForm.patchValue({ status: res.data.status });
           this.submitForm.patchValue({ lname: res.data.lname });
@@ -92,8 +92,8 @@ export class AddUserComponent implements OnInit {
     return this._fb.group({
       id: [''],
       password: [],
-      fname: ['', Validators.compose([Validators.required])],
-      lname: ['', Validators.compose([Validators.required])],
+      name: ['', Validators.compose([Validators.required])],
+      // lname: ['', Validators.compose([Validators.required])],
       email: ['', Validators.compose([Validators.required, Validators.email])],
       description: ['', Validators.compose([Validators.required])],
       country: ['', Validators.compose([Validators.required])],
@@ -151,8 +151,8 @@ export class AddUserComponent implements OnInit {
       // Append all form fields to FormData
       formData.append('id', this.submitForm.value.id);
       formData.append('password', this.submitForm.value.password);
-      formData.append('fname', this.submitForm.value.fname);
-      formData.append('lname', this.submitForm.value.lname);
+      formData.append('name', this.submitForm.value.name);
+      // formData.append('lname', this.submitForm.value.lname);
       formData.append('email', this.submitForm.value.email);
       formData.append('description', this.submitForm.value.description);
       formData.append('country', this.submitForm.value.country);

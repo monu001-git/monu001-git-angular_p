@@ -18,7 +18,7 @@
             @for (item of userData; track $index) {
             <tr>
                 <th scope="row">{{ $index+1 }}</th>
-                <td>{{ item.fname }}</td>
+                <td>{{ item.name }}</td>
                 <td>{{ item.email }}</td>
                 <td>
                     <button (click)="toggleStatus( item.status == 0 ? 1 : 0,item.id)" class="btn btn-sm me-2"
