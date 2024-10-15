@@ -53,9 +53,7 @@
                   <label class="form-label" for="form3Example4">Password</label>
                   <input [type]="hide ? 'password' : 'text'" formControlName="password" id="form3Example4"
                     class="form-control" />
-                  <button type="button" class="btn btn-outline-secondary" (click)="toggleVisibility()">
-                    <i class="fa" [ngClass]="{'fa-eye': hide, 'fa-eye-slash': !hide}"></i>
-                  </button>
+                 
                   <div class="text-danger"
                     *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
                     <div *ngIf="loginForm.get('password')?.errors?.['required']">
@@ -65,7 +63,9 @@
                       Password must be at least 6 characters long.
                     </div>
                   </div>
-
+                  <button type="button" class="btn btn-outline-secondary" (click)="toggleVisibility()">
+                    <i class="fa" [ngClass]="{'fa-eye': hide, 'fa-eye-slash': !hide}"></i>
+                  </button>
                 </div>
 
 
@@ -73,6 +73,8 @@
                   class="btn btn-primary btn-block mb-4">
                   Login
                 </button>
+
+               <br> <a href="/forgot-password">Forgot Password?</a>
 
 
                 <div class="text-center">
