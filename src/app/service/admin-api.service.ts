@@ -11,6 +11,15 @@ export class AdminApiService {
     return this.http.post(`http://localhost:8000/api/login`, data);
   }
 
+  onForgetPassword(data: any) {
+    return this.http.post(`http://localhost:8000/api/forget-password`, data);
+  }
+
+  onforgetPasswordLink(data: any) {
+    return this.http.post(`http://localhost:8000/api/reset-password`, data);
+  }
+
+
   toggleStatus(data: any) {
     return this.http.get(`http://localhost:8000/api/status-change/${data.status}/${data.userId}/${data.tableName}`);
   }

@@ -21,6 +21,14 @@ export const routes: Routes = [
         loadComponent: () => import('../app/Auth/login/login.component').then((comp) => comp.LoginComponent)
     },
     {
+        path: 'forgot-password',
+        loadComponent: () => import('../app/forget-password/forget-password.component').then((comp) => comp.ForgetPasswordComponent)
+    },
+    {
+        path: 'forgot-password-link/:token',
+        loadComponent: () => import('../app/forget-password-link/forget-password-link.component').then((comp) => comp.ForgetPasswordLinkComponent)
+    },
+    {
         path: '**',
         loadComponent: () => import('../app/error/error.component').then((comp) => comp.ErrorComponent)
     }
