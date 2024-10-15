@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from './common-pages/header/header.component';
-import { FooterComponent } from './common-pages/footer/footer.component';
+// import { HeaderComponent } from './common-pages/header/header.component';
+// import { FooterComponent } from './common-pages/footer/footer.component';
+import { HeaderComponent } from '../front/comman-pages/header/header.component';
+import { FooterComponent } from '../front/comman-pages/footer/footer.component';
 import { Router, RouterModule } from '@angular/router';
 import { NavbarComponent } from "../front/comman-pages/navbar/navbar.component";
 import { SwalService } from '../comman-services/swal.service';

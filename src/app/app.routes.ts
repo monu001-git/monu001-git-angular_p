@@ -22,11 +22,11 @@ export const routes: Routes = [
     },
     {
         path: 'forgot-password',
-        loadComponent: () => import('../app/forget-password/forget-password.component').then((comp) => comp.ForgetPasswordComponent)
+        loadComponent: () => import('./Auth/forget-password/forget-password.component').then((comp) => comp.ForgetPasswordComponent)
     },
     {
         path: 'forgot-password-link/:token',
-        loadComponent: () => import('../app/forget-password-link/forget-password-link.component').then((comp) => comp.ForgetPasswordLinkComponent)
+        loadComponent: () => import('./Auth/forget-password-link/forget-password-link.component').then((comp) => comp.ForgetPasswordLinkComponent)
     },
     {
         path: '**',

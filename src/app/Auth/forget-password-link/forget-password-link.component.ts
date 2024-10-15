@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AdminApiService } from '../service/admin-api.service';
+import { AdminApiService } from '../../service/admin-api.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { SwalService } from '../comman-services/swal.service';
+import { SwalService } from '../../comman-services/swal.service';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 

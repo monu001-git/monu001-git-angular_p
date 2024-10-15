@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { SwalService } from '../comman-services/swal.service';
-import { AdminApiService } from '../service/admin-api.service';
+import { SwalService } from '../../comman-services/swal.service';
+import { AdminApiService } from '../../service/admin-api.service';
 
 
 @Component({
