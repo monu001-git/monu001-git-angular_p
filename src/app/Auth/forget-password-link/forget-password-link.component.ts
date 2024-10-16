@@ -27,6 +27,7 @@ export class ForgetPasswordLinkComponent  {
     private route: ActivatedRoute,
     private router:Router
 
+
   ) {
     this.submitForm = this.getAllformControlls();
     this.token = this.route.snapshot.paramMap.get('token');
@@ -70,6 +71,11 @@ export class ForgetPasswordLinkComponent  {
           error: (error: any) => {
             if (error) {
               this.SwalService.errorAlert(error.error.message)
+              localStorage.clear();
+              sessionStorage.clear();
+              localStorage.removeItem('token');
+              sessionStorage.removeItem('token');
+              this.router.navigateByUrl('/');
             }
           },
         });

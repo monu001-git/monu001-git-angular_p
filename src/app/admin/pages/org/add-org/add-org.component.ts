@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AdminApiService } from '../../../../service/admin-api.service';
 import { SwalService } from '../../../../comman-services/swal.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-org',
@@ -15,7 +16,7 @@ export class AddOrgComponent {
 
   submitForm !: FormGroup
 
-  constructor(private _services: AdminApiService, private _fb: FormBuilder, private alert: SwalService) {
+  constructor(private _services: AdminApiService, private _router: Router,private _fb: FormBuilder, private alert: SwalService) {
     this.submitForm = this.getAllformControlls();
   }
 
@@ -59,6 +60,11 @@ export class AddOrgComponent {
           error: (error: any) => {
             if (error) {
               this.alert.errorAlert(error.error.message)
+              localStorage.clear();
+              sessionStorage.clear();
+              localStorage.removeItem('token');
+              sessionStorage.removeItem('token');
+              this._router.navigateByUrl('/');
             }
           },
         });

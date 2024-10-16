@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { Route, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AdminApiService } from '../../service/admin-api.service';
@@ -19,7 +19,7 @@ export class LoginComponent {
   hide = true;
   login_time: any;
 
-  constructor(private _services: AdminApiService, private _fb: FormBuilder, private _route: Router, private swalService: SwalService) {
+  constructor(private _services: AdminApiService,private _fb: FormBuilder, private _route: Router, private swalService: SwalService) {
     this.loginForm = this.getAllformControlls();
   }
 
@@ -62,6 +62,11 @@ export class LoginComponent {
           error: (error: any) => {
             if (error) {
               this.swalService.errorAlert(error.error.message)
+              localStorage.clear();
+              sessionStorage.clear();
+              localStorage.removeItem('token');
+              sessionStorage.removeItem('token');
+              this._route.navigateByUrl('/');
             }
           },
         });

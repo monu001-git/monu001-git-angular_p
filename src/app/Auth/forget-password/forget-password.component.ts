@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SwalService } from '../../comman-services/swal.service';
 import { AdminApiService } from '../../service/admin-api.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class ForgetPasswordComponent {
 
 
 
-  constructor(private services: AdminApiService, private _fb: FormBuilder, private SwalService: SwalService) {
+  constructor(private services: AdminApiService, private _fb: FormBuilder,private _router: Router ,private SwalService: SwalService) {
     this.submitForm = this.getAllformControlls();
   }
 
@@ -46,6 +47,11 @@ export class ForgetPasswordComponent {
           error: (error: any) => {
             if (error) {
               this.SwalService.errorAlert(error.error.message)
+              localStorage.clear();
+              sessionStorage.clear();
+              localStorage.removeItem('token');
+              sessionStorage.removeItem('token');
+              this._router.navigateByUrl('/');
             }
           },
         });

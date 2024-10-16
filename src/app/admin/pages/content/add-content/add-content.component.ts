@@ -127,6 +127,11 @@ export class AddContentComponent {
         error: (error: any) => {
           if (error) {
             this.swalService.errorAlert(error.error.message);
+            localStorage.clear();
+            sessionStorage.clear();
+            localStorage.removeItem('token');
+            sessionStorage.removeItem('token');
+            this._router.navigateByUrl('/');
           }
         },
       });

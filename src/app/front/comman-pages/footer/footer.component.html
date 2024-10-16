@@ -26,13 +26,14 @@
                 <ul>
                     @for (menu of footerMenuFirst; track menu) {
                     <li>
-                        <a href="javascript:void(0);">{{ menu.name  }}</a>
+                        <a href='{{menu.url}}'>{{ menu.name  }}</a>
                     </li>
                     }
                 </ul>
-                }@else{
-                <p>No footer menu items available.</p>
                 }
+                <!-- @else{
+                <p>No footer menu items available.</p>
+                } -->
 
                 <!-- <a class="btn btn-link" href="">Landscaping</a>
                 <a class="btn btn-link" href="">Pruning plants</a>
@@ -49,13 +50,14 @@
                 <ul>
                     @for (menu of footerMenuSecond; track menu) {
                     <li>
-                        <a href="javascript:void(0);">{{ menu.name || '' }}</a>
+                        <a href='{{menu.url}}'>{{ menu.name || '' }}</a>
                     </li>
                     }
                 </ul>
-                }@else{
-                <p>No footer menu items available.</p>
                 }
+                <!-- @else{
+                <p>No footer menu items available.</p>
+                } -->
 
 
 
