@@ -83,5 +83,14 @@ export class AdminApiService {
     return this.http.delete('http://localhost:8000/api/delete-org', { body: { id: data.id } });
   }
 
+  //banner 
+  getBanner() {
+    return this.http.get('http://localhost:8000/api/get-banner');
+  }
+
+
+
+
+  
 
 }

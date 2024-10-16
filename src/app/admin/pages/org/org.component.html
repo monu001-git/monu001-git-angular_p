@@ -10,28 +10,21 @@
             <tr>
                 <th scope="col">Sr.no</th>
                 <th scope="col">Title</th>
-                <th scope="col">Status</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
-            <!-- @for (item of userData; track $index) {
+            @for (item of org; track $index) {
             <tr>
                 <th scope="row">{{ $index+1 }}</th>
-                <td>{{ item.title }}</td>
+                <td>{{ item.name }}</td>
 
-                <td>
-                    <button (click)="toggleStatus( item.status == 0 ? 1 : 0,item.id)" class="btn btn-sm me-2"
-                        [ngClass]="item.status == 1 ? 'btn-warning' : 'btn-secondary'">
-                        {{ item.status == 1 ? 'Active' : 'Inactive' }}
-                    </button>
-                </td>
                 <td>
                     <button class="btn btn-primary btn-sm me-2" (click)="updateContentData(item.id)">Update</button>
                     <button class="btn btn-danger btn-sm" (click)="deleteContent(item.id)">Delete</button>
                 </td>
             </tr>
-            } -->
+            }
         </tbody>
     </table>
 </div>

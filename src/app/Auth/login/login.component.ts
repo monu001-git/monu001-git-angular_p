@@ -51,7 +51,7 @@ export class LoginComponent {
         .onSubmit(payload)
         .subscribe({
           next: (res: any) => {
-            if (res.status == 'success') {
+            if (res.status == 200) {
              this.login_time = res.login_time
               this.swalService.successAlert('login successfully')
               sessionStorage.setItem('token', res.authorisation.token);
