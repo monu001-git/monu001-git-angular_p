@@ -27,36 +27,6 @@ export class BannerComponent implements OnInit {
     this.getBanner()
   }
 
-  getBanner() {
-    this.service.getBanner()
-      .subscribe({
-        next: (res: any) => {
-          if (res.status == 200) {
-            this.banner = res.data
-           // this.swalService.successAlert(res.message)
-          }
-        },
-        error: (error: any) => {
-          if (error) {
-            this.swalService.errorAlert(error.error.message)
-            localStorage.clear();
-            sessionStorage.clear();
-            localStorage.removeItem('token');
-            sessionStorage.removeItem('token');
-            this._router.navigateByUrl('/');
-          }
-        },
-      });
-  }
-
-  updateContentData(id:any){
-
-  }
-
-  deleteContent(id:any){
-
-  }
-
 
   toggleStatus(status: any, id: any) {
     const payload = {
@@ -84,6 +54,59 @@ export class BannerComponent implements OnInit {
           }
         },
       });
+  }
+
+
+  getBanner() {
+    this.service.getBanner()
+      .subscribe({
+        next: (res: any) => {
+          if (res.status == 200) {
+            this.banner = res.data
+           // this.swalService.successAlert(res.message)
+          }
+        },
+        error: (error: any) => {
+          if (error) {
+            this.swalService.errorAlert(error.error.message)
+            localStorage.clear();
+            sessionStorage.clear();
+            localStorage.removeItem('token');
+            sessionStorage.removeItem('token');
+            this._router.navigateByUrl('/');
+          }
+        },
+      });
+  }
+
+  updateBanner(id:any){
+
+  }
+
+
+  deleteBanner(id: any) {
+    const payload = {
+      id: id,
+    };
+    this.service.deleteBanner(payload).subscribe({
+      next: (res: any) => {
+        if (res.status == 200) {
+          this.getBanner()
+          this.swalService.successAlert(res.message)
+        }
+      },
+      error: (error: any) => {
+        if (error) {
+          this.swalService.errorAlert(error.error.message)
+          localStorage.clear();
+          sessionStorage.clear();
+          localStorage.removeItem('token');
+          sessionStorage.removeItem('token');
+          this._router.navigateByUrl('/');
+        }
+      },
+    })
+
   }
 
 

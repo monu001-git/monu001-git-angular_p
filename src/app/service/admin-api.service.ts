@@ -88,9 +88,19 @@ export class AdminApiService {
     return this.http.get('http://localhost:8000/api/get-banner');
   }
 
+  addEditBanner(data: any) {
+    return this.http.post('http://localhost:8000/api/add-edit-banner', data);
+  }
+
+  deleteBanner(data: any) {
+    return this.http.delete('http://localhost:8000/api/delete-banner', { body: { id: data.id } });
+  }
 
 
+  //mail
+  getMail() {
+    return this.http.get('http://localhost:8000/api/mail');
+  }
 
-  
 
 }

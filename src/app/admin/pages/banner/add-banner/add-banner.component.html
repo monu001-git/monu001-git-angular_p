@@ -7,7 +7,75 @@
     </div>
 
 
+    <form [formGroup]="submitForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="title" class="form-label text-dark">Title</label>
+            <input type="text" class="form-control" formControlName="title" id="title" placeholder="Enter first title">
 
+            <div class="text-danger"
+                *ngIf="submitForm.get('title')?.invalid && (submitForm.get('title')?.dirty || submitForm.get('title')?.touched)">
+                <div *ngIf="submitForm.get('title')?.errors?.['required']">
+                    Menu is required.
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label text-dark">Description</label>
+            <textarea  class="form-control" formControlName="description" id="description"
+               ></textarea>
+
+            <div class="text-danger"
+                *ngIf="submitForm.get('description')?.invalid && (submitForm.get('description')?.dirty || submitForm.get('description')?.touched)">
+                <div *ngIf="submitForm.get('description')?.errors?.['required']">
+                    description is required.
+                </div>
+            </div>
+        </div>
+
+
+        <div class="mb-3">  
+            <label for="url" class="form-label text-dark">Url</label>
+            <input type="url" class="form-control" formControlName="url" id="url" placeholder="Enter url">
+
+            <div class="text-danger"
+                *ngIf="submitForm.get('url')?.invalid && (submitForm.get('url')?.dirty || submitForm.get('url')?.touched)">
+                <div *ngIf="submitForm.get('url')?.errors?.['required']">
+                    URL is required.
+                </div>
+            </div>
+        </div>
+
+
+        <div class="mb-3">
+            <label for="order" class="form-label text-dark"> Sort order</label>
+            <input type="number" class="form-control" formControlName="order" id="order"
+                placeholder="Enter short Order">
+
+            <div class="text-danger"
+                *ngIf="submitForm.get('order')?.invalid && (submitForm.get('order')?.dirty || submitForm.get('order')?.touched)">
+                <div *ngIf="submitForm.get('order')?.errors?.['required']">
+                    short Order is required.
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="image" class="form-label text-dark">Image</label>
+            <input type="file" class="form-control" formControlName="image" id="image">
+
+            <div class="text-danger"
+                *ngIf="submitForm.get('image')?.invalid && (submitForm.get('image')?.dirty || submitForm.get('image')?.touched)">
+                <div *ngIf="submitForm.get('image')?.errors?.['required']">
+                    Image is required.
+                </div>
+            </div>
+        </div>
+
+
+        <input type="hidden" formControlName="status">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 
 
 
